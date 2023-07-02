@@ -1,9 +1,10 @@
 package controller
 
 import (
-	"chapter02/module"
 	"fmt"
 	"log"
+
+	"github.com/xshazks/websocket-backend/module"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
@@ -62,6 +63,8 @@ func GetWebSocketId(c *websocket.Conn) {
 			break
 		}
 		log.Printf("Read: %s", msg)
+
+		//module.SendMesssage <- module.Message{Id: id, Message: string(msg)}
 
 		err = c.WriteMessage(mtype, msg)
 		if err != nil {
